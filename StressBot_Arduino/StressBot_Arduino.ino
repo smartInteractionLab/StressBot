@@ -69,10 +69,14 @@ void loop(){
       QS = false;                      // reset the Quantified Self flag for next time    
     }
     ledFadeToBeat();
+    sendDataToProcessing('F', 1);     // Send Finger State to Processing
   }
-
+  else if (finger==false){
+    sendDataToProcessing('F', 0);     // Send Finger State to Processing
+    analogWrite(fadePin,0);          //  fade LED
+    
+  }  
   delay(20);                             //  take a break  
-  
 }
 
 //}//End Loop
@@ -80,10 +84,9 @@ void loop(){
 
 void ledFadeToBeat(){
   fadeRate -= 15;                         //  set LED fade value
-  fadeRate = constrain(fadeRate,0,255);   //  keep LED fade value from going into negative numbers!
-  if(finger== true){
-    analogWrite(fadePin,fadeRate);          //  fade LED
-  }
+  fadeRate = constrain(fadeRate,0,200);   //  keep LED fade value from going into negative numbers! 
+  analogWrite(fadePin,fadeRate);          //  fade LED
+
 }
 
 
