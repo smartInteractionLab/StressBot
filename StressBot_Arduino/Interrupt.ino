@@ -37,7 +37,6 @@ ISR(TIMER2_COMPA_vect){                         // triggered when Timer2 counts 
   }
   else{
   finger=false;
-
   } 
 //    Serial.println(finger); 
 
